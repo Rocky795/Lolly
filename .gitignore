@@ -11,3 +11,8 @@ node_modules/
 
 # Local/Temp data
 /data
+
+# app.json
+app.json
+
+.env
