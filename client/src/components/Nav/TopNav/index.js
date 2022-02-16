@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     display: "flex",
     flexDirection: "row",
-    color:"white",
-    background: "black",
+
+    background: "white",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,

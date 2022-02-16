@@ -4,19 +4,16 @@ import { useSelector } from "react-redux";
 import clsx from "clsx";
 import { Drawer, Divider, useMediaQuery } from "@material-ui/core";
 import MainNavMenu from "./MainNavMenu";
-import Logout from "./Logout";
+import { SideCategoryMenu } from "../CategoryMenus";
 import StartNav from "../TopNav/StartNav";
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   drawer: {
-    backgroundColor:"black",
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: "nowrap",
   },
   drawerOpen: {
-    backgroundColor:"black",
-    color:"white",
     width: drawerWidth,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
@@ -24,8 +21,6 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   drawerClose: {
-    backgroundColor:"black",
-    color:"white",
     transition: theme.transitions.create(["width", "margin", "visibility"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -51,6 +46,7 @@ const SideNav = () => {
   const isMaxScreenSm = useMediaQuery(theme.breakpoints.down("sm"));
 
   const isDrawerOpen = useSelector(({ layout }) => layout.isDrawerOpen);
+  const isAuth = useSelector(({ channel }) => channel.isAuth);
   let isOpen;
   if (isMaxScreenSm) isOpen = isDrawerOpen;
   else isOpen = true; //We will control open by css
@@ -75,8 +71,8 @@ const SideNav = () => {
       </div>
       <Divider />
       <MainNavMenu />
-      <Logout/>
-      {/* {isDrawerOpen && !isAuth && <SideCategoryMenu />} */}
+      <Divider />
+      {isDrawerOpen && !isAuth && <SideCategoryMenu />}
     </Drawer>
   );
 };

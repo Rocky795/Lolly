@@ -12,7 +12,6 @@ const CommentsContent = ({ videoId }) => {
 
   useEffect(() => {
     dispatch(getVideoComments(videoId));
-    // eslint-disable-next-line
   }, [videoId]);
 
   return (

@@ -2,28 +2,22 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import clsx from "clsx";
 import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { makeStyles } from "@material-ui/core/styles";
+import { red, grey } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   active: {
-    backgroundColor: "#222327",
-    color: "white",
-    "&:hover": { backgroundColor: "#222327"},
-  },
-  ListBackground: {
-   "&:hover" :{ backgroundColor: "#222327"},
+    backgroundColor: grey[300],
+    "&:hover": { backgroundColor: grey[400] },
   },
   icon: {
-    padding: theme.spacing(0, 1),    
-    color:"#626366",
-    fontSize: "1.2rem"
+    padding: theme.spacing(0, 1),
   },
   iconActive: {
-    color: "white",
+    color: red[600],
   },
   text: {
-    color: "#626366" /* blue colors for links too */,
+    color: "inherit" /* blue colors for links too */,
     textDecoration: "none" /* no underline */,
     "&:hover": {
       color: "inherit" /* blue colors for links too */,
@@ -50,37 +44,37 @@ const CircleItem = ({ children, title }) => (
     <div>{title}</div>
   </div>
 );
-const NavItem = ({ to, title,icon, onClick, disableActive, type }) => {
+const NavItem = ({ to, title, icon, onClick, disableActive, type }) => {
   const classes = useStyles();
   const location = useLocation();
   const isActive =
     location.pathname === "/trending"
       ? location.pathname + location.search === to
       : location.pathname === to;
-  // const Icon = icon;
+  const Icon = icon;
   const Item =
     type === "secondary" ? (
       <CircleItem title={title}>
-      <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
+        <Icon />
       </CircleItem>
     ) : (
       <ListItem
         button
         onClick={onClick}
-        className={isActive ? `${classes.active} ${classes.ListBackground}` : classes.ListBackground}
+        className={isActive ? classes.active : ""}
       >
         <ListItemIcon
           className={clsx(classes.icon, {
             [classes.iconActive]: isActive && !disableActive,
           })}
         >
-        <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
+          <Icon />
         </ListItemIcon>
         <ListItemText primary={title} />
       </ListItem>
     );
   return to ? (
-    <NavLink to={to} className={isActive ? `${classes.active} ${classes.text}` : classes.text}>
+    <NavLink to={to} className={classes.text}>
       {Item}
     </NavLink>
   ) : (

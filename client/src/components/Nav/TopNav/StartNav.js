@@ -6,27 +6,23 @@ import { Menu as MenuIcon } from "@material-ui/icons";
 
 import { NavLink } from "react-router-dom";
 import { setDrawer, toggleDrawer } from "../../../redux/actions/layout";
-import lollyLogo from "../../../assets/lolly-logo.jpeg";
+import youtubeLogo from "../../../assets/youtube-logo.png";
 
 const useStyles = makeStyles((theme) => ({
-  lollyLogo: {
-    height: "25px",
-    width:"120px",
+  youtubeLogo: {
+    height: "35px",
     padding: theme.spacing(0, 1),
     [theme.breakpoints.up("md")]: {
-      height: "25px",
+      height: "40px",
     },
   },
   toolbar: {
     paddingRight: "0px",
   },
   iconButton: {
-    backgroundColor: "black",
-    color: "white",
     "&:hover": {
       //you want this to be the same as the backgroundColor above
-      backgroundColor: "black",
-      color: "white",
+      backgroundColor: "white",
     },
     "&:focus": {
       outline: "white",
@@ -60,8 +56,8 @@ const StartNav = ({ mobile }) => {
       </IconButton>
       <NavLink to="/">
         <img
-          src={lollyLogo}
-          className={classes.lollyLogo}
+          src={youtubeLogo}
+          className={classes.youtubeLogo}
           alt="YouTube logo"
         />
       </NavLink>

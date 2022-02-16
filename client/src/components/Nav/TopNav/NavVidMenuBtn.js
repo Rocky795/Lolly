@@ -17,23 +17,15 @@ import {
 } from "@material-ui/icons";
 import urlJoin from "url-join";
 
-import { setModal } from "../../../redux/actions/upload";
+import { setModal, resetUpload } from "../../../redux/actions/upload";
 import { BACKEND_URL } from "../../../config";
 import NavItem from "../NavItem";
 import UploadModal from "../../Upload/UploadModal";
 
 const useStyles = makeStyles((theme) => ({
-  chngback:{
-    backgroundColor:"purple",
-    color:"white"
-  },
   iconButton: {
-    color:"white",
-    backgroundColor:"black",
-    
     "&:hover": {
-      backgroundColor: "black",
-      color:"white",
+      backgroundColor: "white",
     },
     "&:focus": {
       outline: "white",
@@ -104,14 +96,14 @@ const NavVideoMenuBtn = () => {
         transition
         disablePortal
       >
-        <Paper >
+        <Paper>
           <ClickAwayListener onClickAway={handleClose}>
-            <MenuList className={classes.chngback}
+            <MenuList
               autoFocusItem={open}
               id="menu-list-grow"
               onKeyDown={handleListKeyDown}
             >
-              <List  component="nav" aria-labelledby="nested-list-subheader">
+              <List component="nav" aria-labelledby="nested-list-subheader">
                 <NavItem
                   title="Upload"
                   icon={TVIcon}

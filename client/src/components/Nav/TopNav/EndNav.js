@@ -8,33 +8,24 @@ import {
   Apps as AppsIcon,
   Notifications as NotificationsIcon,
 } from "@material-ui/icons";
-import {ReactComponent as ConnectWallet} from '../../../assets/connect-wallet.svg'
 import { setMobileSearch } from "../../../redux/actions/layout";
+import SignInBtn from "../../SignInBtn";
 import NavUserMenuBtn from "./NavUserMenuBtn";
 import NavVidMenuBtn from "./NavVidMenuBtn";
-import { svg } from "caniuse-lite/data/features";
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     paddingLeft: "0px",
-    paddingRight:"9px",
-    backgroundColor:"black",
-    color:"white",
   },
   iconButton: {
-    backgroundColor: "black",
-    color:"white",    
     "&:hover": {
       //you want this to be the same as the backgroundColor above
-      backgroundColor: "black",
-      color:"white",
+      backgroundColor: "white",
     },
     "&:focus": {
       outline: "white",
-    }
-  }
+    },
+  },
 }));
-
-
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -61,22 +52,37 @@ const NavBar = () => {
           <NavVidMenuBtn />
         </Tooltip>
         <Hidden smDown>
-        
-        {!isAuth && (
+          <>
+            <Tooltip title="Apps">
+              <span>
+                <IconButton disabled>
+                  <AppsIcon />
+                </IconButton>
+              </span>
+            </Tooltip>
+            {isAuth || (
+              <Tooltip title="Settings">
+                <span>
+                  <IconButton disabled>
+                    <MoreIcon />
+                  </IconButton>
+                </span>
+              </Tooltip>
+            )}
+          </>
+        </Hidden>
+        {isAuth && (
           <Tooltip title="Notifications">
             <IconButton className={classes.iconButton}>
               <NotificationsIcon />
             </IconButton>
           </Tooltip>
         )}
-        </Hidden>
-        <Tooltip title="Connect Wallet" >
-          <div style={{display:"flex",alignItems:"center",cursor:"pointer",border:"1px solid white",borderRadius: "5px",padding:"2px 2px"}}>
-            <ConnectWallet style={{width:"25px",height:"23px"}}/>
-            <p style={{margin:"10px 1px",fontSize:"smaller"}}>CONNECT WALLET</p>
-          </div>
-        </Tooltip>
+
         {isAuth && <NavUserMenuBtn />}
+        {isAuth || (
+          <SignInBtn size={theme.breakpoints.up("md") ? "medium" : "large"} />
+        )}
       </>
     </Toolbar>
   );

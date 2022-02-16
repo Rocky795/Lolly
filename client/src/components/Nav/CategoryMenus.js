@@ -3,8 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 
-import '../../index.css'
-
 import NavItem from "./NavItem";
 import categoryIcons from "../categoryIcons";
 
@@ -19,18 +17,16 @@ const useStyles = makeStyles((theme) => ({
     width: "24px",
     height: "24px",
     borderRadius: "50%",
-    zIndex:"10"
   },
   root_h: {
     display: "flex",
     overflowX: "auto",
     justifyContent: "center",
-    flexWrap:"wrap"
   },
-  spacing_h: { display:"flex",flexDirection:"column",justifyContent:"space-evenly",margin: "1em", backgroundColor:"black",width:"15vw",height:"19vh",borderRadius:"9px" },
+  spacing_h: { margin: "1em" },
   img_h: {
-    width: "24px",
-    height: "24px",
+    width: "100%",
+    height: "100%",
     borderRadius: "100%",
   },
 }));
@@ -41,6 +37,7 @@ const SideCategoryMenu = () => {
     <List>
       <ListItem>
         <ListItemText
+          primary="BEST OF YOUTUBE"
           classes={{ primary: classes.title }}
         />
       </ListItem>
@@ -70,7 +67,7 @@ const HorizontalCategoryMenu = () => {
     <div className={classes.root_h}>
       {categoryIcons.map((item, index) => {
         return (
-          <div className={classes.spacing_h} id="explore-resp">
+          <div className={classes.spacing_h}>
             <NavItem
               key={index}
               to={`/trending?category=${index}`}

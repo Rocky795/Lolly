@@ -63,7 +63,6 @@ const LikeDislikes = ({ size, showDislikes = true, type, id, videoId }) => {
       }
     };
     fetchRating();
-    // eslint-disable-next-line
   }, [type, id]);
 
   const getRating = (option) => options[option];

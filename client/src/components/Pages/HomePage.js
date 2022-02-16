@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   makeStyles,
   Container,
-  Typography, 
+  Typography,
   Divider,
   createMuiTheme,
   responsiveFontSizes,
@@ -54,14 +54,42 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getHomeVideos());
-    // eslint-disable-next-line
-  }, []);
+  },[dispatch]);
+  // useEffect(() => {
+  //   dispatch(getHomeVideos());
+  // }.[]);
   const classes = useStyles();
   let theme = createMuiTheme();
   theme = responsiveFontSizes(theme);
   return (
     <div>
-
+      <Banner closeable>
+        <div className={classes.banner}>
+          <img
+            className={classes.bannerImg}
+            alt="youtube icon"
+            src={youtubeIcon}
+          />
+          <div>
+            <ThemeProvider theme={theme}>
+              <Typography variant="h2"> FullStack Clone</Typography>
+              <Typography variant="h4">
+                <a
+                  style={{
+                    color: "red",
+                  }}
+                  href="https://github.com/smfils1/youtube-clone"
+                >
+                  GitHub Repo
+                </a>
+              </Typography>
+              <Typography variant="body2">
+                * for Educational Purposes
+              </Typography>
+            </ThemeProvider>
+          </div>
+        </div>
+      </Banner>
       <Container maxWidth="xl" className={classes.root}>
         <Typography variant="h5" className={classes.text}>
           Recommended

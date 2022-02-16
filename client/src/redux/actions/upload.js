@@ -71,7 +71,8 @@ const uploadVideo = (file) => {
       };
       formData.append("file", file);
       const { data: video } = await api.post("/api/videos", formData, config);
-      const filename = video.filename; 
+      const filename = video.filename;
+      console.log(filename)
       dispatch(setVideoFile(filename));
       const { data } = await api.post("/api/videos/thumbnails", {
         filename,

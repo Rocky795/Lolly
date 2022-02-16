@@ -7,6 +7,7 @@ const AntTabs = withStyles({
     backgroundColor: "black",
   },
 })(Tabs);
+
 const AntTab = withStyles((theme) => ({
   root: {
     color: grey[600],

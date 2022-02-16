@@ -58,8 +58,8 @@ const saveFile = ({ filePath, filename, mimeType }) => {
     try {
       const drive = await getDrive();
       const bucket = await getBucket("bucketName1");
-       //yaha phele BuckName se phele Youtube tha
-       console.log(bucket);
+      //yaha phele BuckName se phele Youtube tha
+      console.log(bucket);
       const file = await drive.files.create({
         resource: {
           name: filename,
@@ -73,7 +73,7 @@ const saveFile = ({ filePath, filename, mimeType }) => {
       });
       resolve(file.data);
     } catch (err) {
-      console.log("this error is from savefile"+" "+err);
+      console.log("this error is from savefile" + " " + err);
       reject(err);
     }
   });
@@ -119,7 +119,7 @@ const getDrive = () => {
         })
       );
     } catch (err) {
-      console.log("this error is from the getdrive" + " "+ err);
+      console.log("this error is from the getdrive" + " " + err);
       reject(err);
     }
   });
