@@ -15,7 +15,8 @@ export default (OriginalComponent, isPrivate = true) => {
 
     useEffect(() => {
       checkAuth();
-    },);
+      // eslint-disable-next-line
+    }, []);
 
     return <OriginalComponent {...props} />;
   };

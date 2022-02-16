@@ -3,14 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import NavItem from "../NavItem";
 import {
-  Tooltip,
+  // Tooltip,
   Avatar,
   Grid,
-  Typography,
+  // Typography,
   List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Divider,
   ClickAwayListener,
   IconButton,
@@ -23,8 +20,11 @@ import { logoutChannel } from "../../../redux/actions/channel";
 
 const useStyles = makeStyles((theme) => ({
   iconButton: {
+    backgroundColor: "black",
+    color:"white",    
     "&:hover": {
-      backgroundColor: "white",
+      backgroundColor: "black",
+      color:"white",
     },
     "&:focus": {
       outline: "white",
@@ -33,21 +33,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TooltipHeader = ({ text, children }) => (
-  <Tooltip title={text} placement="right">
-    <div
-      style={{
-        width: "200px",
-      }}
-    >
-      <span>
-        <Typography variant="body2" noWrap>
-          {children || text}
-        </Typography>
-      </span>
-    </div>
-  </Tooltip>
-);
+// const TooltipHeader = ({ text, children }) => (
+//   <Tooltip title={text} placement="right">
+//     <div
+//       style={{
+//         width: "200px",
+//       }}
+//     >
+//       <span>
+//         <Typography variant="body2" noWrap>
+//           {children || text}
+//         </Typography>
+//       </span>
+//     </div>
+//   </Tooltip>
+// );
 
 const NavUserMenuBtn = () => {
   const dispatch = useDispatch();
@@ -125,7 +125,7 @@ const NavUserMenuBtn = () => {
               </Grid>
               <Divider />
               <List component="nav" aria-labelledby="nested-list-subheader">
-                <NavItem
+                <NavItem 
                   to={`/channel/${id}`}
                   title={"Your Channel"}
                   icon={ExitToAppIcon}

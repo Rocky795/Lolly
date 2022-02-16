@@ -58,7 +58,7 @@ const CommentForm = ({ videoId, commentTo, handleReplyComment }) => {
         const {
           data: { comment: newComment },
         } = await api.post("/api/comments", data);
-        handleReplyComment && handleReplyComment();
+        handleReplyComment();
         dispatch(addComment(newComment));
       } catch (err) {
         console.log(err);

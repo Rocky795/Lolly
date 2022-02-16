@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import { List, Divider, useMediaQuery, useTheme } from "@material-ui/core";
+import { List, useMediaQuery, useTheme } from "@material-ui/core";
 import { Home as HomeIcon, Whatshot as TrendingIcon } from "@material-ui/icons";
-import menuAuthIcons from "../../menuAuthIcons";
+import { faHome,faCompass,faChartLine,faPlayCircle,faCog} from '@fortawesome/free-solid-svg-icons'
 import NavItem from "../NavItem";
 import { toggleDrawer } from "../../../redux/actions/layout";
 
@@ -19,19 +19,33 @@ const MainNavMenu = () => {
   };
 
   return (
-    <List>
+    <List style={{paddingTop: "40px"}}>
       {[
         {
           title: "Home",
-          icon: HomeIcon,
+          icon: faHome,
           path: "/",
         },
         {
-          title: "Trending",
-          icon: TrendingIcon,
+          title: "Explore",
+          icon: faCompass,
           path: "/trending",
         },
-        ...menuAuthIcons,
+        {
+          title: "Creator Rewards",
+          icon: faChartLine,
+          path: "/subscriptions",
+        },
+        {
+          title: "Your Videos",
+          icon: faPlayCircle,
+          path: "/videopage",
+        },
+        {
+          title: "Settings",
+          icon: faCog,
+          path: "/history",
+        }
       ].map((item, index) => {
         return (
           <React.Fragment key={index}>
@@ -41,7 +55,6 @@ const MainNavMenu = () => {
               icon={item.icon}
               onClick={handleItemClick}
             />
-            {index === 1 && <Divider />}
           </React.Fragment>
         );
       })}

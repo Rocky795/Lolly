@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-  },  
+  },
   button: {
     alignSelf: "center",
     margin: theme.spacing(3),
@@ -111,7 +111,7 @@ function StyledDropzone() {
 }
 const VidDropzone = () => {
   const isLoading = useSelector(({ upload }) => upload.isLoading);
-  return isLoading ? <div>Loading....</div>:<StyledDropzone />;
+  return isLoading ? <div>Loading....</div> : <StyledDropzone />;
 };
 
 export default VidDropzone;
